@@ -36,10 +36,12 @@ if [ -d "$basedir/.git" ]; then
   echo "Updating dotfiles using existing git..."
   cd "$basedir"
   git pull --quiet --rebase origin master
+  git submodule update --init --recursive
 else
   echo "Checking out dotfiles using git..."
   rm -rf "$basedir"
   git clone --quiet --depth=1 "$repourl" "$basedir"
+  git submodule update --init --recursive
 fi
 
 cd "$basedir"
