@@ -58,7 +58,7 @@ for path in .* ; do
   esac
 done
 symlink "$basedir/.vim/vimrc" "$HOME/.vimrc"
-symlink "$basedir/.vim/gvimrc" "$HOME/.gvimrc"
+# symlink "$basedir/.vim/gvimrc" "$HOME/.gvimrc"
 
 echo "Adding executables to ~/bin/..."
 mkdir -p "$bindir"
@@ -66,8 +66,8 @@ for path in bin/* ; do
   symlink "$basedir/$path" "$bindir/$(basename $path)"
 done
 
-# echo "Setting up vim plugins..."
-# .vim/update.sh
+echo "Setting up vim plugins..."
+.vim/update.sh
 
 echo "Setting up git..."
 cp "$basedir/.gitconfig.base" "$HOME/.gitconfig"
