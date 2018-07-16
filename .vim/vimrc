@@ -6,7 +6,7 @@ endif
 let mapleader = ','
 
 syntax enable               " 开启语法高亮功能
-syntax on                   " 允许用指定语法高亮配色方案替换默认方案
+" syntax on                   " 允许用指定语法高亮配色方案替换默认方案
 
 set ai                      "自动缩进
 set bs=2                    "在insert模式下用退格键删除
@@ -27,8 +27,14 @@ set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 set nofoldenable
 " FFmepg 代码格式
-filetype indent on          " 自适应不同语言的智能缩进
-filetype plugin indent on
+" vim-plug 插件处理了
+" filetype indent on          " 自适应不同语言的智能缩进
+" filetype plugin indent on
+" 开启文件类型侦测
+" filetype on
+" 根据侦测到的不同类型加载对应的插件
+" filetype plugin on
+
 set expandtab               "以下三个配置配合使用，设置tab和缩进空格数
 set tabstop=4
 set shiftwidth=4
@@ -279,11 +285,6 @@ else
         hi! NonText ctermbg=NONE guibg=NONE
     endif
 endif
-
-" 开启文件类型侦测
-filetype on
-" 根据侦测到的不同类型加载对应的插件
-filetype plugin on
 
 " tcomment_vim
 "Toggle comments
