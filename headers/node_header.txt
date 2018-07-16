@@ -1,0 +1,7 @@
+:insert
+/*
+ * 创建：{date}
+ */
+
+'use strict'
+

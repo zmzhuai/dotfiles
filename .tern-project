@@ -1,0 +1,13 @@
+{
+    "libs": [
+        "ecmascript"
+    ],
+    "loadEagerly": [
+    ],
+    "plugins": {
+        "doc_comment": {},
+        "node": {},
+        "es_modules": {}
+    }
+}
+
