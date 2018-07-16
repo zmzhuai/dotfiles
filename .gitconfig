@@ -1,6 +1,6 @@
 [user]
 	name = Min Zhang
-	email = zm@chengweiapp.com
+	email = 
 [core]
 	excludesfile = /Users/zhangmin/.gitignore_global
 [difftool "sourcetree"]
