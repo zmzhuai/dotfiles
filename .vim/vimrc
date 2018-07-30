@@ -55,6 +55,7 @@ nmap <silent> <leader>P "*P
 imap <silent> <leader>P <Esc>"*P
 nmap <silent> <leader>p "*p
 imap <silent> <leader>p <Esc>"*p
+vmap <silent> <leader>p "*p
 nmap <silent> <leader>y "*y
 vmap <silent> <leader>y "*y
 
@@ -166,6 +167,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     " Plug 'kshenoy/vim-signature'          " 给代码行做标记
+    Plug 'tpope/vim-obsession'      " vim session
 
     " Complete
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer' }
@@ -205,6 +207,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
     " Plug 'othree/yajs.vim', {'for': 'javascript'}
     "Plug 'walm/jshint.vim'
+    " Plug 'zbqyexingkong/apidoc.vim'
 
     " Markdown
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
