@@ -1,12 +1,12 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/zhangmin/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="agnoster"
-DEFAULT_USER="zhangmin"
+DEFAULT_USER="mactool"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -114,11 +114,12 @@ gp=" --config http.proxy=localhost:${PORT}"
 
 alias -g 'serveralias=serveralias -t zsh'
 
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+export N_PREFIX="$HOME/util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
 
 export PATH="$HOME/.fastlane/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH=$PATH:/Users/zhangmin/depot_tools
+export PATH=$PATH:$HOME/depot_tools
 
 # export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 # export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
@@ -126,32 +127,12 @@ export PROJECT_HOME="$HOME/.virtualenvs"
 # export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/local/bin/virtualenvwrapper.sh
 
-# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT=/Users/zhangmin/Developer/cocos2d-x-3.7.1/tools/cocos2d-console/bin
-export PATH=$COCOS_CONSOLE_ROOT:$PATH
-
-# Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
-export COCOS_TEMPLATES_ROOT=/Users/zhangmin/Developer/cocos2d-x-3.7.1/templates
-export PATH=$COCOS_TEMPLATES_ROOT:$PATH
-
-# Add environment variable SDKBOX_HOME for sdkbox installer
-export SDKBOX_HOME=/Users/zhangmin/.sdkbox
-export PATH=${SDKBOX_HOME}/bin:$PATH
-
-# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT="/Users/zhangmin/cocos2d-x-3.16/tools/cocos2d-console/bin"
-export PATH=$COCOS_CONSOLE_ROOT:$PATH
-
-# Add environment variable COCOS_X_ROOT for cocos2d-x
-export COCOS_X_ROOT="/Users/zhangmin"
-export PATH=$COCOS_X_ROOT:$PATH
-
-# Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
-export COCOS_TEMPLATES_ROOT="/Users/zhangmin/cocos2d-x-3.16/templates"
-export PATH=$COCOS_TEMPLATES_ROOT:$PATH
-
-export TERM=xterm-256color-italic
-export THEOS="/Users/zhangmin/theos"
+export TERM=xterm-256color
+export THEOS="$HOME/theos"
 
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
+# one dark terminal scheme
+# Add colors to Terminal
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
