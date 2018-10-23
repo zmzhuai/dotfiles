@@ -145,3 +145,6 @@ export PATH=$NDK_ROOT:$PATH
 export ANDROID_SDK_ROOT="/Users/mactool/Library/Android/sdk"
 export PATH=$ANDROID_SDK_ROOT:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
