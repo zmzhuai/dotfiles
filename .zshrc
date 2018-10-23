@@ -134,5 +134,14 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 # one dark terminal scheme
 # Add colors to Terminal
-export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
+# export CLICOLOR=1
+# export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# Add environment variable NDK_ROOT for cocos2d-x
+export NDK_ROOT="/Users/mactool/Library/Android/sdk/ndk-bundle"
+export PATH=$NDK_ROOT:$PATH
+
+# Add environment variable ANDROID_SDK_ROOT for cocos2d-x
+export ANDROID_SDK_ROOT="/Users/mactool/Library/Android/sdk"
+export PATH=$ANDROID_SDK_ROOT:$PATH
+export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
