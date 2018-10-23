@@ -88,7 +88,6 @@ alias vimconfig='vi ~/.vimrc'
 alias sz='source ~/.zshrc'     # Easily source your ~/.zshrc file.
 alias ll='ls -l'
 alias la='ls -a'
-alias vi='vim'
 alias grep='grep --color=auto'
 alias subl='open -a "Sublime Text"'
 alias -s txt='vi'
@@ -106,6 +105,7 @@ alias nup='npm update -g'
 
 alias ssh="TERM=xterm-256color ssh"
 alias tmux="TERM=screen-256color-bce tmux"
+# alias tmux="env TERM=xterm-256color-italic tmux"
 
 # Proxy
 PORT=1087
@@ -127,7 +127,7 @@ export PROJECT_HOME="$HOME/.virtualenvs"
 # export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/local/bin/virtualenvwrapper.sh
 
-export TERM=xterm-256color
+# export TERM=xterm-256color
 export THEOS="$HOME/theos"
 
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"

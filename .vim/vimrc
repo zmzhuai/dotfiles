@@ -1,8 +1,4 @@
 " vim configure
-if has('python3')
-  silent! python3 1
-endif
-
 let mapleader = ','
 
 syntax enable               " 开启语法高亮功能
@@ -130,23 +126,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
     " Color schemes
-    " Plug 'joshdick/onedark.vim'
-    " Plug 'exitface/synthwave.vim'
-    " Plug 'raphamorim/lucario'
-    " Plug 'benjaminwhite/Benokai'
-    " Plug 'w0ng/vim-hybrid'
-    "Plug 'vivkin/flatland.vim'
-    "Plug 'flazz/vim-colorschemes'
-    " Plug 'altercation/vim-colors-solarized'
-    "Plug 'ColorSchemeMenuMaker'
-    "Plug 'rainux/vim-desert-warm-256'
-    " Plug 'mhartington/oceanic-next'
-    Plug 'rakr/vim-one'
+    Plug 'joshdick/onedark.vim'
 
     " Files
     Plug 'mileszs/ack.vim', { 'on': 'Ack' }
     Plug 'scrooloose/nerdtree'
-    " Plug 'ctrlpvim/ctrlp.vim'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'jistr/vim-nerdtree-tabs'
 
@@ -172,28 +156,6 @@ call plug#begin('~/.vim/plugged')
     " Complete
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer' }
     " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' } 
-    " if has('nvim')
-    "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " else
-    "   Plug 'Shougo/deoplete.nvim'
-    "   Plug 'roxma/nvim-yarp'
-    "   Plug 'roxma/vim-hug-neovim-rpc'
-    " endif
-    " set encoding=utf-8
-    " set runtimepath+=~/.vim/plugged/deoplete.nvim
-    " set pyxversion=3
-    " let g:deoplete#enable_at_startup = 1
-    " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    " inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-    " " call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
-    "
-    " call deoplete#custom#source('buffer', 'is_debug_enabled', 1)
-    " " let g:deoplete#num_processes = 1
-    "
-    " call deoplete#custom#option('sources', {
-    " \ '_': ['buffer'],
-    " \})
 
     " Cocoa
     "Plug 'msanders/cocoa.vim'
@@ -251,36 +213,9 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " Global
-" set background=dark
-" let g:hybrid_custom_term_colors = 1
-" let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-" colorscheme hybrid 
-" colorscheme solarized
-" colorscheme onedark
-
-" let g:oceanic_next_terminal_bold = 1
-" let g:oceanic_next_terminal_italic = 1
-" colorscheme OceanicNext
-
-"Credit joshdick
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
-  if (has("nvim"))
-  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
-
-set background=dark
-colorscheme one
+let g:onedark_termcolors=256
+syntax on
+colorscheme onedark
 
 " tcomment_vim
 "Toggle comments
@@ -429,9 +364,7 @@ vmap <Leader>a: :Tabularize /:<CR>
 " Enable Powerline fonts for airline
 set laststatus=2
 let g:airline_detect_whitespace          = 0 "关闭空白符检测
-" let g:airline_theme='onedark'
-" let g:airline_theme='oceanicnext'
-let g:airline_theme='one'
+let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1 "顶部tab栏显示
 let g:Powerline_symbols = 'fancy'
@@ -596,3 +529,4 @@ set nocursorline
 
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
+
