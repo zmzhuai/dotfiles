@@ -2,7 +2,7 @@
 let mapleader = ','
 
 syntax enable               " 开启语法高亮功能
-" syntax on                   " 允许用指定语法高亮配色方案替换默认方案
+syntax on                   " 允许用指定语法高亮配色方案替换默认方案
 
 set ai                      "自动缩进
 set bs=2                    "在insert模式下用退格键删除
@@ -214,7 +214,6 @@ call plug#end()
 
 " Global
 let g:onedark_termcolors=256
-syntax on
 colorscheme onedark
 
 " tcomment_vim
