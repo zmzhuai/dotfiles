@@ -213,7 +213,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " Global
-let g:onedark_termcolors=256
+" let g:onedark_termcolors=256
 colorscheme onedark
 
 " tcomment_vim
