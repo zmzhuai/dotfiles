@@ -106,6 +106,7 @@ alias nup='npm update -g'
 alias ssh="TERM=xterm-256color ssh"
 alias tmux="TERM=screen-256color-bce tmux"
 # alias tmux="env TERM=xterm-256color-italic tmux"
+alias ssh-keygen="ssh-keygen -t ad25519 -a 100"
 
 # Proxy
 PORT=1087
@@ -114,6 +115,7 @@ gp=" --config http.proxy=localhost:${PORT}"
 
 alias -g 'serveralias=serveralias -t zsh'
 
+export PATH="/usr/local/bin:$PATH"
 export N_PREFIX="$HOME/util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 
@@ -139,6 +141,7 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 # Add environment variable NDK_ROOT for cocos2d-x
 export NDK_ROOT="/Users/mactool/Library/Android/sdk/ndk-bundle"
+export ANDROID_NDK="/Users/mactool/Library/Android/sdk/android-ndk-r14b"
 export PATH=$NDK_ROOT:$PATH
 
 # Add environment variable ANDROID_SDK_ROOT for cocos2d-x
