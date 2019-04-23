@@ -504,15 +504,20 @@ set secure
 au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
 
 " ALE
+let g:ale_php_langserver_use_global = 1
+let g:ale_php_langserver_executable = $HOME.'/.composer/vendor/bin/php-language-server.php'
+" let g:ale_completion_enabled = 1
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 let g:ale_linters = {
 \   'javascript': ['tsserver', 'standard'],
 \   'go': ['golint'],
+\   'php': ['langserver'],
 \}
 let g:ale_fixers = {
 \   'javascript': ['standard'],
 \   'go': ['golint'],
+\   'php': ['langserver'],
 \}
 " let g:ale_sign_column_always = 1
 let g:ale_lint_on_save = 1
@@ -524,6 +529,10 @@ autocmd FileType javascript nmap <buffer> gt :ALEHover<CR>
 autocmd FileType typescript nmap <buffer> gd :ALEGoToDefinition<CR>
 autocmd FileType typescript nmap <buffer> gr :ALEFindReferences<CR>
 " autocmd FileType typescript nmap <buffer> gt :ALEHover<CR>
+" autocmd FileType php nmap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
+autocmd FileType php nmap <buffer> gd :ALEGoToDefinition<CR>
+autocmd FileType php nmap <buffer> gr :ALEFindReferences<CR>
+autocmd FileType php nmap <buffer> gt :ALEHover<CR>
 
 " Enable completion where available.
 " let g:ale_completion_enabled = 1
