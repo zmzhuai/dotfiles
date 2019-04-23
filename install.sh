@@ -91,6 +91,15 @@ else
   echo "Skipping tmux setup because tmux isn't installed."
 fi
 
+if which composer >/dev/null 2>&1 ; then
+    symlink "$basedir/composer.json" "$HOME/.composer/composer.json"
+    composer require global felixfbecker/language-server
+    cd ~/.composer
+    composer run-script --working-dir=vendor/felixfbecker/language-server parse-stubs
+else
+  echo "Skipping composer setup because composer isn't installed."
+fi
+
 postinstall="$HOME/.postinstall"
 if [ -e "$postinstall" ]; then
   echo "Running post-install..."

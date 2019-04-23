@@ -140,12 +140,12 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 # export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # Add environment variable NDK_ROOT for cocos2d-x
-export NDK_ROOT="/Users/mactool/Library/Android/sdk/ndk-bundle"
-export ANDROID_NDK="/Users/mactool/Library/Android/sdk/android-ndk-r14b"
+export NDK_ROOT="$HOME/Library/Android/sdk/ndk-bundle"
+export ANDROID_NDK="$HOME/Library/Android/sdk/android-ndk-r14b"
 export PATH=$NDK_ROOT:$PATH
 
 # Add environment variable ANDROID_SDK_ROOT for cocos2d-x
-export ANDROID_SDK_ROOT="/Users/mactool/Library/Android/sdk"
+export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
 export PATH=$ANDROID_SDK_ROOT:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
