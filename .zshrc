@@ -106,7 +106,7 @@ alias nup='npm update -g'
 alias ssh="TERM=xterm-256color ssh"
 alias tmux="TERM=screen-256color-bce tmux"
 # alias tmux="env TERM=xterm-256color-italic tmux"
-alias ssh-keygen="ssh-keygen -t ad25519 -a 100"
+alias ssh-keygen="ssh-keygen -t ed25519 -a 100"
 
 # Proxy
 PORT=1087
@@ -151,3 +151,11 @@ export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_121`
+
+# Go development
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+test -d "${GOPATH}" || mkdir "${GOPATH}"
+test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"

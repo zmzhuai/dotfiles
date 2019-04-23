@@ -154,7 +154,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-obsession'      " vim session
 
     " Complete
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer' }
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --java-completer --clang-completer --js-completer --go-completer ' }
     " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' } 
 
     " Cocoa
@@ -506,9 +506,13 @@ au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
 " ALE
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
-let g:ale_linters = {'javascript': ['tsserver', 'standard']}
+let g:ale_linters = {
+\   'javascript': ['tsserver', 'standard'],
+\   'go': ['golint'],
+\}
 let g:ale_fixers = {
 \   'javascript': ['standard'],
+\   'go': ['golint'],
 \}
 " let g:ale_sign_column_always = 1
 let g:ale_lint_on_save = 1
