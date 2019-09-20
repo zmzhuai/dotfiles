@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="spaceship"
 DEFAULT_USER="mactool"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -159,3 +159,9 @@ export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+# Setting for the new UTF-8 terminal support in Lion
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+
+export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5h://127.0.0.1:7891

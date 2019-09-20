@@ -59,6 +59,7 @@ vmap <silent> <leader>y "*y
 " autocmd FileType c set cinoptions=(0
 " JS文件使用2个空格缩进
 autocmd FileType javascript set expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType php set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType vue.html.javascript.css set expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " Allow tabs in Makefiles.
 autocmd FileType make,automake set noexpandtab tabstop=8 shiftwidth=8 softtabstop=8
@@ -127,6 +128,8 @@ call plug#begin('~/.vim/plugged')
 
     " Color schemes
     Plug 'joshdick/onedark.vim'
+    Plug 'ayu-theme/ayu-vim'
+    Plug 'vim-airline/vim-airline-themes'
 
     " Files
     Plug 'mileszs/ack.vim', { 'on': 'Ack' }
@@ -230,7 +233,10 @@ endif
 
 " Global
 " let g:onedark_termcolors=256
-colorscheme onedark
+" colorscheme onedark
+set termguicolors 
+let ayucolor="mirage"
+colorscheme ayu
 
 " tcomment_vim
 "Toggle comments
@@ -379,7 +385,7 @@ vmap <Leader>a: :Tabularize /:<CR>
 " Enable Powerline fonts for airline
 set laststatus=2
 let g:airline_detect_whitespace          = 0 "关闭空白符检测
-let g:airline_theme='onedark'
+" let g:airline_theme='auy_mirage'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1 "顶部tab栏显示
 let g:Powerline_symbols = 'fancy'
@@ -442,8 +448,8 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR>
 " let g:nerdtree_tabs_open_on_console_startup=1
 
 " auto add node header comment
-autocmd bufnewfile *.js so /Users/zhangmin/headers/node_header.txt
-autocmd bufnewfile *.js exe "1," . 6 . "g/{date}.*/s//" .strftime("%Y-%m-%d")
+autocmd bufnewfile *.js so ~/headers/node_header.txt
+" autocmd bufnewfile *.js exe "1," . 6 . "g/{date}.*/s//" .strftime("%Y-%m-%d")
 " autocmd bufnewfile *.js exe "1," . 6 . "g/{author}.*/s//张闽"
 " autocmd bufnewfile *.js exe "1," . 6 . "g/{company}.*/s//厦门初莘科技有限公司"
 autocmd Bufwritepre,filewritepre *.js execute "normal ma"
