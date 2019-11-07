@@ -164,4 +164,15 @@ export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5h://127.0.0.1:7891
+#proxy
+# export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5h://127.0.0.1:7891;export no_proxy=localhost,127.0.0.1
+# export http_proxy=http://0.0.0.0:1087;export https_proxy=http://0.0.0.0:1087;export all_proxy=socks5h://127.0.0.1:1086;export no_proxy=localhost,127.0.0.1
+
+export PATH="/usr/local/sbin:$PATH"
+
+# flutter
+export PATH="$PATH:${HOME}/flutter/bin"
+
+# php 7.1
+export PATH="/usr/local/opt/php@7.1/bin:$PATH"
+export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
