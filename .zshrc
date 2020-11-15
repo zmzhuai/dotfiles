@@ -50,7 +50,7 @@ DEFAULT_USER="mactool"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx brew gem zsh-syntax-highlighting)
+plugins=(git osx brew gem)
 
 # User configuration
 
@@ -58,6 +58,8 @@ plugins=(git osx brew gem zsh-syntax-highlighting)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -107,6 +109,7 @@ alias ssh="TERM=xterm-256color ssh"
 alias tmux="TERM=screen-256color-bce tmux"
 # alias tmux="env TERM=xterm-256color-italic tmux"
 alias ssh-keygen="ssh-keygen -t ed25519 -a 100"
+alias sha256sum="shasum -a 256"
 
 # Proxy
 PORT=1087
@@ -173,6 +176,5 @@ export PATH="/usr/local/sbin:$PATH"
 # flutter
 export PATH="$PATH:${HOME}/flutter/bin"
 
-# php 7.1
-export PATH="/usr/local/opt/php@7.1/bin:$PATH"
-export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
+export PATH="/usr/local/opt/php@7.3/bin:$PATH"
+export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
