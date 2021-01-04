@@ -138,7 +138,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'jistr/vim-nerdtree-tabs'
 
     " FZF
-    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
 
     " Utility

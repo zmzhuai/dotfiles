@@ -123,14 +123,11 @@ export N_PREFIX="$HOME/util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":
 
 
 export PATH="$HOME/.fastlane/bin:$PATH"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=$PATH:$HOME/depot_tools
 
-# export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
-# export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 export PROJECT_HOME="$HOME/.virtualenvs"
-# export WORKON_HOME="$HOME/.virtualenvs"
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # export TERM=xterm-256color
 export THEOS="$HOME/theos"
@@ -154,7 +151,7 @@ export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_121`
+# export JAVA_HOME=`/usr/libexec/java_home -v 11.0.9`
 
 # Go development
 export GOPATH="${HOME}/.go"
@@ -178,3 +175,8 @@ export PATH="$PATH:${HOME}/flutter/bin"
 
 export PATH="/usr/local/opt/php@7.3/bin:$PATH"
 export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+export PATH="/Users/mactool/Library/Android/sdk/ndk/20.0.5594570/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin:$PATH"
+
