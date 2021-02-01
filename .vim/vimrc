@@ -55,6 +55,9 @@ vmap <silent> <leader>p "*p
 nmap <silent> <leader>y "*y
 vmap <silent> <leader>y "*y
 
+ autocmd FileType json syntax match Comment +\/\/.\+$+
+
+
 " 根据括号缩进
 " autocmd FileType c set cinoptions=(0
 " JS文件使用2个空格缩进
@@ -159,6 +162,13 @@ call plug#begin('~/.vim/plugged')
     " Complete
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --java-completer --clang-completer --js-completer --go-completer ' }
     " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' } 
+    
+    " Syntax
+    Plug 'sheerun/vim-polyglot'             " 多种语言语法支持
+    Plug 'w0rp/ale'                         " 语法lint
+
+    " DebugInspector
+    Plug 'puremourning/vimspector'
 
     " Cocoa
     "Plug 'msanders/cocoa.vim'
@@ -187,10 +197,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] }
     Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp'] }     " cpp和h切换
 
-    " Syntax
-    Plug 'sheerun/vim-polyglot'             " 多种语言语法支持
-    Plug 'w0rp/ale'                         " 语法lint
-
     " Vue
     Plug 'posva/vim-vue', { 'for': ['vue'] }
 
@@ -199,36 +205,27 @@ call plug#begin('~/.vim/plugged')
     Plug 'ap/vim-css-color', { 'for': ['css'] }
 
     " tmux
-    Plug 'christoomey/vim-tmux-navigator'
-    let g:tmux_navigator_no_mappings = 1
-    nnoremap <silent> <C-l> :TmuxNavigateLeft<cr>
-    nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-    nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-    nnoremap <silent> <C-h> :TmuxNavigateRight<cr>
-    " nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
-    Plug 'benmills/vimux'
-    " Prompt for a command to run
-    map <Leader>vp :VimuxPromptCommand<CR>
-    " Run last command executed by VimuxRunCommand
-    map <Leader>vl :VimuxRunLastCommand<CR>
-    " Inspect runner pane
-    map <Leader>vi :VimuxInspectRunner<CR>
+    " Plug 'christoomey/vim-tmux-navigator'
+    " let g:tmux_navigator_no_mappings = 1
+    " nnoremap <silent> <C-l> :TmuxNavigateLeft<cr>
+    " nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+    " nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+    " nnoremap <silent> <C-h> :TmuxNavigateRight<cr>
+    " " nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+    " Plug 'benmills/vimux'
+    " " Prompt for a command to run
+    " map <Leader>vp :VimuxPromptCommand<CR>
+    " " Run last command executed by VimuxRunCommand
+    " map <Leader>vl :VimuxRunLastCommand<CR>
+    " " Inspect runner pane
+    " map <Leader>vi :VimuxInspectRunner<CR>
 call plug#end()
 
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+" Enable true color 启用终端24位色
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
 
 " Global
@@ -265,6 +262,7 @@ inoremap <expr> <CR> BreakLine() ? "<CR><CR><C-o>k<C-t>" : "<CR>"
 " imap <C-Return> <CR><CR><C-o>k<Tab>
 
 " YouCompleteMe
+let g:ycm_enable_diagnostic             = 0
 let g:ycm_enable_diagnostic_signs       = 0
 let g:ycm_always_populate_location_list = 0 "default 0
 " 补全功能在注释中同样有效
@@ -280,6 +278,9 @@ let g:ycm_collect_identifiers_from_tags_files=1
 inoremap <leader>; <C-x><C-o>
 " 补全内容不以分割子窗口形式出现，只显示补全列表
 set completeopt-=preview
+" 隐藏悬浮窗口
+let g:ycm_auto_hover=''
+nmap <leader>D <plug>(YCMHover)
 " 从第一个键入字符就开始罗列匹配项
 "let g:ycm_min_num_of_chars_for_completion=1
 " 禁止缓存匹配项，每次都重新生成匹配项
@@ -290,11 +291,11 @@ let g:ycm_seed_identifiers_with_syntax = 1
 " let g:ycm_warning_symbol               = '>*'
 "nnoremap gd :YcmCompleter GoToDefinition<CR>
 "nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap gd :YcmCompleter GoTo subcommand<CR>
+" nnoremap gd :YcmCompleter GoTo subcommand<CR>
 " autocmd FileType javascript nnoremap gt :YcmCompleter GetType<CR>
-autocmd FileType javascript nnoremap gD :YcmCompleter GoTo subcommand<CR>
-autocmd FileType javascript nnoremap gc :YcmCompleter GetDoc<CR>
-autocmd FileType python nnoremap gr :YcmCompleter GoToReferences<CR>
+" autocmd FileType javascript nnoremap gD :YcmCompleter GoTo subcommand<CR>
+" autocmd FileType javascript nnoremap gc :YcmCompleter GetDoc<CR>
+" autocmd FileType python nnoremap gr :YcmCompleter GoToReferences<CR>
 " autocmd FileType typescript nnoremap gr :YcmCompleter GoToReferences<CR>
 nmap <F4> :YcmDiags<CR>
 let g:ycm_filetype_blacklist = {
@@ -512,7 +513,7 @@ au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
 " ALE
 let g:ale_php_langserver_use_global = 1
 let g:ale_php_langserver_executable = $HOME.'/.composer/vendor/bin/php-language-server.php'
-" let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 let g:ale_linters = {
@@ -552,9 +553,6 @@ augroup VimDiff
   autocmd VimEnter,FilterWritePre * if &diff | ALEDisable | endif
 augroup END
 
-" repeat
-silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
-
 " 解决开了语法高亮vim光标移动卡慢的问题
 set re=1
 set ttyfast
@@ -575,3 +573,21 @@ nnoremap <silent>         <C-a> :<C-u>call AddSubtract("\<C-a>", '')<CR>
 nnoremap <silent> <Leader><C-a> :<C-u>call AddSubtract("\<C-a>", 'b')<CR>
 nnoremap <silent>         <C-x> :<C-u>call AddSubtract("\<C-x>", '')<CR>
 nnoremap <silent> <Leader><C-x> :<C-u>call AddSubtract("\<C-x>", 'b')<CR>
+
+" vimspector
+set mouse=a " 开启鼠标支持
+" packadd! vimspector
+nmap <Leader>cc <Plug>VimspectorContinue
+nmap <Leader>cr <Plug>VimspectorRestart
+nmap <Leader>cs <Plug>VimspectorStop
+nmap <Leader>cp <Plug>VimspectorPause
+nmap <Leader>ct <Plug>VimspectorToggleBreakpoint
+nmap <Leader>cn <Plug>VimspectorStepOver
+nmap <Leader>ci <Plug>VimspectorStepInto
+nmap <Leader>co <Plug>VimspectorStepOut
+nmap <Leader>cl <Plug>VimspectorRunToCursor
+nmap <Leader>ck :VimspectorReset<CR>
+
+" repeat
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+

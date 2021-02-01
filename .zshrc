@@ -111,11 +111,6 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias ssh-keygen="ssh-keygen -t ed25519 -a 100"
 alias sha256sum="shasum -a 256"
 
-# Proxy
-PORT=1087
-alias hp="http_proxy=http://127.0.0.1:${PORT}/ https_proxy=http://127.0.0.1:${PORT}/"
-gp=" --config http.proxy=localhost:${PORT}"
-
 alias -g 'serveralias=serveralias -t zsh'
 
 export PATH="/usr/local/bin:$PATH"
@@ -124,9 +119,11 @@ export N_PREFIX="$HOME/util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":
 
 export PATH="$HOME/.fastlane/bin:$PATH"
 # export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+# export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export PATH=$PATH:$HOME/depot_tools
 
-export PROJECT_HOME="$HOME/.virtualenvs"
+# export PROJECT_HOME="$HOME/.virtualenvs"
 # source /usr/local/bin/virtualenvwrapper.sh
 
 # export TERM=xterm-256color
@@ -139,34 +136,27 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 # export CLICOLOR=1
 # export LSCOLORS=ExFxBxDxCxegedabagacad
 
-# Add environment variable NDK_ROOT for cocos2d-x
-export NDK_ROOT="$HOME/Library/Android/sdk/ndk-bundle"
-export ANDROID_NDK="$HOME/Library/Android/sdk/android-ndk-r14b"
-export PATH=$NDK_ROOT:$PATH
-
 # Add environment variable ANDROID_SDK_ROOT for cocos2d-x
-export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
-export PATH=$ANDROID_SDK_ROOT:$PATH
-export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
+# export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+# export PATH=$ANDROID_SDK_ROOT:$PATH
+# export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # export JAVA_HOME=`/usr/libexec/java_home -v 11.0.9`
 
 # Go development
 export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
+# export GOROOT="$(brew --prefix golang)/libexec" # slow operate
+export GOROOT="/usr/local/opt/go/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+# libffi
 export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 # Setting for the new UTF-8 terminal support in Lion
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
-
-#proxy
-# export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5h://127.0.0.1:7891;export no_proxy=localhost,127.0.0.1
-# export http_proxy=http://0.0.0.0:1087;export https_proxy=http://0.0.0.0:1087;export all_proxy=socks5h://127.0.0.1:1086;export no_proxy=localhost,127.0.0.1
 
 export PATH="/usr/local/sbin:$PATH"
 
@@ -177,6 +167,4 @@ export PATH="/usr/local/opt/php@7.3/bin:$PATH"
 export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="/usr/local/opt/python@3.7/bin:$PATH"
-export PATH="/Users/mactool/Library/Android/sdk/ndk/20.0.5594570/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin:$PATH"
 
