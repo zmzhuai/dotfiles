@@ -118,7 +118,7 @@ export N_PREFIX="$HOME/util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":
 
 
 export PATH="$HOME/.fastlane/bin:$PATH"
-# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 # export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export PATH=$PATH:$HOME/depot_tools
@@ -137,12 +137,13 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 # export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # Add environment variable ANDROID_SDK_ROOT for cocos2d-x
-# export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
-# export PATH=$ANDROID_SDK_ROOT:$PATH
-# export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
+export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+export PATH=$ANDROID_SDK_ROOT:$PATH
+export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_121`
 # export JAVA_HOME=`/usr/libexec/java_home -v 11.0.9`
 
 # Go development
