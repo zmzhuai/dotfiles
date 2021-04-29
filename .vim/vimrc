@@ -57,7 +57,6 @@ vmap <silent> <leader>y "*y
 
  autocmd FileType json syntax match Comment +\/\/.\+$+
 
-
 " 根据括号缩进
 " autocmd FileType c set cinoptions=(0
 " JS文件使用2个空格缩进
@@ -149,6 +148,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'easymotion/vim-erasymotion'
     Plug 'justinmk/vim-sneak'
     Plug 'vim-airline/vim-airline'
+    " Plug 'itchyny/lightline.vim'
     Plug 'Raimondi/delimitMate'           " 括号补全
     Plug 'nathanaelkane/vim-indent-guides'
     " Plug 'scrooloose/syntastic'
@@ -160,12 +160,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-obsession'      " vim session
 
     " Complete
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --java-completer --clang-completer --js-completer --go-completer ' }
+    " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --java-completer --clang-completer --js-completer --go-completer ' }
     " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' } 
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     
     " Syntax
-    Plug 'sheerun/vim-polyglot'             " 多种语言语法支持
-    Plug 'w0rp/ale'                         " 语法lint
+    " Plug 'sheerun/vim-polyglot'             " 多种语言语法支持
+    " Plug 'w0rp/ale'                         " 语法lint
 
     " DebugInspector
     Plug 'puremourning/vimspector'
@@ -194,15 +195,15 @@ call plug#begin('~/.vim/plugged')
     Plug 'airblade/vim-gitgutter'
 
     " Cpp
-    Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] }
-    Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp'] }     " cpp和h切换
+    " Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] }
+    " Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp'] }     " cpp和h切换
 
     " Vue
-    Plug 'posva/vim-vue', { 'for': ['vue'] }
+    " Plug 'posva/vim-vue', { 'for': ['vue'] }
 
     " jsx
-    Plug 'alampros/vim-styled-jsx', { 'for': ['jsx'] } " CSS
-    Plug 'ap/vim-css-color', { 'for': ['css'] }
+    " Plug 'alampros/vim-styled-jsx', { 'for': ['jsx'] } " CSS
+    " Plug 'ap/vim-css-color', { 'for': ['css'] }
 
     " tmux
     " Plug 'christoomey/vim-tmux-navigator'
@@ -242,80 +243,80 @@ map <C-\> :TComment<CR>
 map <C-\/> :TCommentBlock<CR>
 
 " DelimitMate
-"BreakLine: Return TRUE if in the middle of {} or () in INSERT mode
-if !exists('*BreakLine')
-  fun BreakLine()
-      if (mode() == 'i')
-          return ((getline(".")[col(".")-2] == '{' && getline(".")[col(".")-1] == '}') ||
-                      \(getline(".")[col(".")-2] == '(' && getline(".")[col(".")-1] == ')'))
-      else
-          return 0
-      endif
-  endfun
-endif
+" "BreakLine: Return TRUE if in the middle of {} or () in INSERT mode
+" if !exists('*BreakLine')
+"   fun BreakLine()
+"       if (mode() == 'i')
+"           return ((getline(".")[col(".")-2] == '{' && getline(".")[col(".")-1] == '}') ||
+"                       \(getline(".")[col(".")-2] == '(' && getline(".")[col(".")-1] == ')'))
+"       else
+"           return 0
+"       endif
+"   endfun
+" endif
 
 " Remap <Enter> to split the line and insert a new line in between if
 " BreakLine return True
 " inoremap <expr> <CR> BreakLine() ? "<CR><CR><C-o>k<Tab>" : "<CR>"
-inoremap <expr> <CR> BreakLine() ? "<CR><CR><C-o>k<C-t>" : "<CR>"
+" inoremap <expr> <CR> BreakLine() ? "<CR><CR><C-o>k<C-t>" : "<CR>"
 " inoremap <C-Return> <CR><CR><C-o>k<C-t>
 " imap <C-Return> <CR><CR><C-o>k<Tab>
 
 " YouCompleteMe
-let g:ycm_enable_diagnostic             = 0
-let g:ycm_enable_diagnostic_signs       = 0
-let g:ycm_always_populate_location_list = 0 "default 0
-" 补全功能在注释中同样有效
-let g:ycm_complete_in_comments = 1
-" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
-let g:ycm_confirm_extra_conf    = 0
-" let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
-" 开启 YCM 标签补全引擎
-let g:ycm_collect_identifiers_from_tags_files=1
-" 引入 C++ 标准库tags
-"set tags+=~/tags/tags
-" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
-inoremap <leader>; <C-x><C-o>
-" 补全内容不以分割子窗口形式出现，只显示补全列表
-set completeopt-=preview
-" 隐藏悬浮窗口
-let g:ycm_auto_hover=''
-nmap <leader>D <plug>(YCMHover)
-" 从第一个键入字符就开始罗列匹配项
-"let g:ycm_min_num_of_chars_for_completion=1
-" 禁止缓存匹配项，每次都重新生成匹配项
-"let g:ycm_cache_omnifunc=0
-" 语法关键字补全         
-let g:ycm_seed_identifiers_with_syntax = 1
-" let g:ycm_error_symbol                 = '>>'
-" let g:ycm_warning_symbol               = '>*'
-"nnoremap gd :YcmCompleter GoToDefinition<CR>
-"nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" nnoremap gd :YcmCompleter GoTo subcommand<CR>
-" autocmd FileType javascript nnoremap gt :YcmCompleter GetType<CR>
-" autocmd FileType javascript nnoremap gD :YcmCompleter GoTo subcommand<CR>
-" autocmd FileType javascript nnoremap gc :YcmCompleter GetDoc<CR>
-" autocmd FileType python nnoremap gr :YcmCompleter GoToReferences<CR>
-" autocmd FileType typescript nnoremap gr :YcmCompleter GoToReferences<CR>
-nmap <F4> :YcmDiags<CR>
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar'    : 1,
-      \ 'qf'        : 1,
-      \ 'notes'     : 1,
-      \ 'markdown'  : 1,
-      \ 'md'        : 1,
-      \ 'unite'     : 1,
-      \ 'text'      : 1,
-      \ 'vimwiki'   : 1,
-      \ 'pandoc'    : 1,
-      \ 'infolog'   : 1,
-      \ 'mail'      : 1,
-      \ 'gitcommit' : 1,
-      \ 'sql'       : 1
-      \}
-let g:ycm_filetype_specific_completion_to_disable = {
-      \ 'gitcommit': 1
-      \}
+" let g:ycm_enable_diagnostic             = 0
+" let g:ycm_enable_diagnostic_signs       = 0
+" let g:ycm_always_populate_location_list = 0 "default 0
+" " 补全功能在注释中同样有效
+" let g:ycm_complete_in_comments = 1
+" " 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
+" let g:ycm_confirm_extra_conf    = 0
+" " let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
+" " 开启 YCM 标签补全引擎
+" let g:ycm_collect_identifiers_from_tags_files=1
+" " 引入 C++ 标准库tags
+" "set tags+=~/tags/tags
+" " YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
+" inoremap <leader>; <C-x><C-o>
+" " 补全内容不以分割子窗口形式出现，只显示补全列表
+" set completeopt-=preview
+" " 隐藏悬浮窗口
+" let g:ycm_auto_hover=''
+" nmap <leader>D <plug>(YCMHover)
+" " 从第一个键入字符就开始罗列匹配项
+" "let g:ycm_min_num_of_chars_for_completion=1
+" " 禁止缓存匹配项，每次都重新生成匹配项
+" "let g:ycm_cache_omnifunc=0
+" " 语法关键字补全         
+" let g:ycm_seed_identifiers_with_syntax = 1
+" " let g:ycm_error_symbol                 = '>>'
+" " let g:ycm_warning_symbol               = '>*'
+" "nnoremap gd :YcmCompleter GoToDefinition<CR>
+" "nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" " nnoremap gd :YcmCompleter GoTo subcommand<CR>
+" " autocmd FileType javascript nnoremap gt :YcmCompleter GetType<CR>
+" " autocmd FileType javascript nnoremap gD :YcmCompleter GoTo subcommand<CR>
+" " autocmd FileType javascript nnoremap gc :YcmCompleter GetDoc<CR>
+" " autocmd FileType python nnoremap gr :YcmCompleter GoToReferences<CR>
+" " autocmd FileType typescript nnoremap gr :YcmCompleter GoToReferences<CR>
+" nmap <F4> :YcmDiags<CR>
+" let g:ycm_filetype_blacklist = {
+"       \ 'tagbar'    : 1,
+"       \ 'qf'        : 1,
+"       \ 'notes'     : 1,
+"       \ 'markdown'  : 1,
+"       \ 'md'        : 1,
+"       \ 'unite'     : 1,
+"       \ 'text'      : 1,
+"       \ 'vimwiki'   : 1,
+"       \ 'pandoc'    : 1,
+"       \ 'infolog'   : 1,
+"       \ 'mail'      : 1,
+"       \ 'gitcommit' : 1,
+"       \ 'sql'       : 1
+"       \}
+" let g:ycm_filetype_specific_completion_to_disable = {
+"       \ 'gitcommit': 1
+"       \}
 
 " Ack
 let g:ackprg = 'ag --nogroup --column'
@@ -384,7 +385,6 @@ vmap <Leader>a: :Tabularize /:<CR>
 "vmap <Leader>a: :Tabularize /:\zs<CR>
 
 " Enable Powerline fonts for airline
-set laststatus=2
 let g:airline_detect_whitespace          = 0 "关闭空白符检测
 " let g:airline_theme='auy_mirage'
 let g:airline_powerline_fonts = 1
@@ -465,8 +465,8 @@ autocmd bufnewfile *.jsx exe "1," . 6 . "g/{date}.*/s//" .strftime("%Y-%m-%d")
 autocmd Bufwritepre,filewritepre *.js execute "normal ma"
 
 " Vim-vue
-let g:vue_disable_pre_processors=1
-autocmd FileType vue syntax sync fromstart
+" let g:vue_disable_pre_processors=1
+" autocmd FileType vue syntax sync fromstart
 
 " " please install ConqueShell (https://github.com/lrvick/Conque-Shell)
 " function! DebugJs()
@@ -508,50 +508,51 @@ set exrc
 set secure
 
 " vim-vue wpy
-au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
+" au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
 
 " ALE
-let g:ale_php_langserver_use_global = 1
-let g:ale_php_langserver_executable = $HOME.'/.composer/vendor/bin/php-language-server.php'
-let g:ale_completion_enabled = 0
-let g:ale_sign_warning = '▲'
-let g:ale_sign_error = '✗'
-let g:ale_linters = {
-\   'javascript': ['tsserver', 'standard'],
-\   'go': ['gofmt'],
-\   'php': ['langserver'],
-\}
-let g:ale_fixers = {
-\   'javascript': ['standard'],
-\   'go': ['gofmt'],
-\   'php': ['langserver'],
-\}
-" let g:ale_sign_column_always = 1
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:airline#extensions#ale#enabled = 1
-autocmd FileType javascript nmap <buffer> gd :ALEGoToDefinition<CR>
-autocmd FileType javascript nmap <buffer> gr :ALEFindReferences<CR>
-autocmd FileType javascript nmap <buffer> gt :ALEHover<CR>
-autocmd FileType typescript nmap <buffer> gd :ALEGoToDefinition<CR>
-autocmd FileType typescript nmap <buffer> gr :ALEFindReferences<CR>
-" autocmd FileType typescript nmap <buffer> gt :ALEHover<CR>
-" autocmd FileType php nmap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
-autocmd FileType php nmap <buffer> gd :ALEGoToDefinition<CR>
-autocmd FileType php nmap <buffer> gr :ALEFindReferences<CR>
-autocmd FileType php nmap <buffer> gt :ALEHover<CR>
+" let g:ale_php_langserver_use_global = 1
+" let g:ale_php_langserver_executable = $HOME.'/.composer/vendor/bin/php-language-server.php'
+" let g:ale_completion_enabled = 0
+" let g:ale_sign_warning = '▲'
+" let g:ale_sign_error = '✗'
+" let g:ale_linters = {
+" \   'javascript': ['tsserver', 'standard'],
+" \   'go': ['gofmt'],
+" \   'php': ['langserver'],
+" \}
+" let g:ale_fixers = {
+" \   'javascript': ['standard'],
+" \   'go': ['gofmt'],
+" \   'php': ['langserver'],
+" \}
+" " let g:ale_sign_column_always = 1
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_text_changed = 0
+" let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#ale#show_line_numbers = 1
+" autocmd FileType javascript nmap <buffer> gd :ALEGoToDefinition<CR>
+" autocmd FileType javascript nmap <buffer> gr :ALEFindReferences<CR>
+" autocmd FileType javascript nmap <buffer> gt :ALEHover<CR>
+" autocmd FileType typescript nmap <buffer> gd :ALEGoToDefinition<CR>
+" autocmd FileType typescript nmap <buffer> gr :ALEFindReferences<CR>
+" " autocmd FileType typescript nmap <buffer> gt :ALEHover<CR>
+" " autocmd FileType php nmap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
+" autocmd FileType php nmap <buffer> gd :ALEGoToDefinition<CR>
+" autocmd FileType php nmap <buffer> gr :ALEFindReferences<CR>
+" autocmd FileType php nmap <buffer> gt :ALEHover<CR>
 
 " Enable completion where available.
 " let g:ale_completion_enabled = 1
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
-nmap ]w :ALENextWrap<CR>
-nmap [w :ALEPreviousWrap<CR>
-nmap <Leader>f <Plug>(ale_fix)
-augroup VimDiff
-  autocmd!
-  autocmd VimEnter,FilterWritePre * if &diff | ALEDisable | endif
-augroup END
+" highlight link ALEWarningSign String
+" highlight link ALEErrorSign Title
+" nmap ]w :ALENextWrap<CR>
+" nmap [w :ALEPreviousWrap<CR>
+" nmap <Leader>f <Plug>(ale_fix)
+" augroup VimDiff
+"   autocmd!
+"   autocmd VimEnter,FilterWritePre * if &diff | ALEDisable | endif
+" augroup END
 
 " 解决开了语法高亮vim光标移动卡慢的问题
 set re=1
@@ -588,6 +589,184 @@ nmap <Leader>co <Plug>VimspectorStepOut
 nmap <Leader>cl <Plug>VimspectorRunToCursor
 nmap <Leader>ck :VimspectorReset<CR>
 
+"----------------------coc config---------------------------
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+ set statusline^=%t\ %h%w%m%r\ %{coc#status()}\ \ %{get(b:,'coc_current_function','')}\ %=%-{&ft}\ %l\ %c\ %P
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" coc airline config
+" let g:airline#extensions#coc#enabled = 1
+let airline#extensions#coc#error_symbol = 'Error:'
+let airline#extensions#coc#warning_symbol = 'Warning:'
+let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+" --------------------coc config end-----------------------
+
 " repeat
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+
+" xray config macros
+let @a= '12kV11jy11jp12jj0v$d7kkt:lllpJdt"5j0jj' " 配置ip宏先把ip地址列表放在下面空一行
+let @b= '6kV6jy6jp3j02j0j' " 配置新ip的routing
+let @c= '5kkV6jky6jkp6jj0v$hd6k0t:lllpldt"j0j0jjjdd' " 配置新的uuid，uuid放在下面空一行
+let @d = 't:lDj0' " 去除ip后面的端口号
 
