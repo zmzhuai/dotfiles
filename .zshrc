@@ -169,3 +169,4 @@ export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
