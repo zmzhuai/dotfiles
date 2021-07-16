@@ -1,0 +1,36 @@
+{
+    // Enable preselect feature on neovim, default: `true`
+    "suggest.enablePreselect": true,
+    // Add preview option to `completeopt`, default: `false`
+    "suggest.enablePreview": true,
+    // completion automatically select the first completed
+    // "suggest.noselect": false,
+    // "suggest.triggerAfterInsertEnter": true
+    "suggest.minTriggerInputLength": 3,
+    // Target to show hover information, default is floating window when possible.
+    // "coc.preferences.hoverTarget": "preview",
+    // Auto close preview window on cursor move.,  default: `true`
+    //"coc.preferences.previewAutoClose": false,
+    "diagnostic.warningSign": "▲",
+    "diagnostic.errorSign": "✗",
+    "diagnostic.hintSign": "🔅",
+    "diagnostic.infoSign": "❕",
+    "javascript.validate.enable": false,
+    // "coc.preferences.currentFunctionSymbolAutoUpdate": true
+    "languageserver": {
+        "go": {
+          "command": "gopls",
+          "rootPatterns": ["go.mod"],
+          "trace.server": "verbose",
+          "filetypes": ["go"]
+        },
+        "intelephense": {
+            "command": "intelephense",
+            "args": ["--stdio"],
+            "filetypes": ["php"],
+            "initializationOptions": {
+              "storagePath": "/tmp/intelephense"
+            }
+        }
+      }
+}
