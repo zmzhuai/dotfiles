@@ -149,7 +149,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'justinmk/vim-sneak'
     Plug 'vim-airline/vim-airline'
     " Plug 'itchyny/lightline.vim'
-    Plug 'Raimondi/delimitMate'           " 括号补全
+    " Plug 'Raimondi/delimitMate'           " 括号补全
     Plug 'nathanaelkane/vim-indent-guides'
     " Plug 'scrooloose/syntastic'
     Plug 'tomtom/tcomment_vim'              " 注释
@@ -191,8 +191,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 
     " Git
-    Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
+    " Plug 'tpope/vim-fugitive'
+    " Plug 'airblade/vim-gitgutter'
 
     " Cpp
     " Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] }
@@ -765,6 +765,11 @@ let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
 " python root pattern
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
+let g:coc_global_extensions = ['coc-eslint', 'coc-json', 'coc-pairs', 'coc-tailwindcss', 'coc-prettier', 'coc-tsserver', 'coc-emmet', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-git', 'coc-pyright']
+" let g:coc_global_extensions = ['coc-eslint', 'coc-json', 'coc-pairs', 'coc-tailwindcss', 'coc-tsserver', 'coc-emmet', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-git', 'coc-pyright']
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 " --------------------coc config end-----------------------
 
 " repeat
