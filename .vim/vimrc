@@ -781,3 +781,7 @@ let @b= '6kV6jy6jp3j02j0j' " 配置新ip的routing
 let @c= '5kkV6jky6jkp6jj0v$hd6k0t:lllpldt"j0j0jjjdd' " 配置新的uuid，uuid放在下面空一行
 let @d = 't:lDj0' " 去除ip后面的端口号
 
+" vimspector
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+let g:vimspector_install_gadgets = [ 'node', 'python', 'vscode-php-debug']
+
