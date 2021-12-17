@@ -33,8 +33,6 @@
             }
         }
     },
-    "prismaLanguageServer.prismaFmtBinPath": "",
-    "prisma.prismaFmtBinPath": "",
     "coc.preferences.formatOnSaveFiletypes": [
         "prisma"
     ]

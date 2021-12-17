@@ -164,9 +164,9 @@ export PATH="/usr/local/sbin:$PATH"
 # flutter
 export PATH="$PATH:${HOME}/flutter/bin"
 
-export PATH="/usr/local/opt/php@7.3/bin:$PATH"
-export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
+export PATH="/usr/local/opt/php@7.4/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
