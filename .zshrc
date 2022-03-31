@@ -109,6 +109,7 @@ alias ssh="TERM=xterm-256color ssh"
 alias tmux="TERM=screen-256color-bce tmux"
 # alias tmux="env TERM=xterm-256color-italic tmux"
 alias ssh-keygen="ssh-keygen -t ed25519 -a 100"
+alias ssh-keygen-origin="ssh-keygen"
 alias sha256sum="shasum -a 256"
 
 alias -g 'serveralias=serveralias -t zsh'

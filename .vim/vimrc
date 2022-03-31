@@ -130,7 +130,8 @@ call plug#begin('~/.vim/plugged')
 
     " Color schemes
     Plug 'joshdick/onedark.vim'
-    Plug 'ayu-theme/ayu-vim'
+    Plug 'Luxed/ayu-vim'
+    Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 
     " Files
@@ -147,7 +148,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'godlygeek/tabular'
     " Plug 'easymotion/vim-erasymotion'
     Plug 'justinmk/vim-sneak'
-    Plug 'vim-airline/vim-airline'
     " Plug 'itchyny/lightline.vim'
     " Plug 'Raimondi/delimitMate'           " 括号补全
     Plug 'nathanaelkane/vim-indent-guides'
@@ -387,7 +387,7 @@ vmap <Leader>a: :Tabularize /:<CR>
 
 " Enable Powerline fonts for airline
 let g:airline_detect_whitespace          = 0 "关闭空白符检测
-" let g:airline_theme='auy_mirage'
+let g:airline_theme='ayu_mirage'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1 "顶部tab栏显示
 let g:Powerline_symbols = 'fancy'
@@ -766,7 +766,7 @@ let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
 " python root pattern
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
-let g:coc_global_extensions = ['coc-eslint', 'coc-json', 'coc-pairs', 'coc-prettier', 'coc-tsserver', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-git', 'coc-pyright']
+let g:coc_global_extensions = ['coc-git', 'coc-eslint', 'coc-json', 'coc-pairs', 'coc-prettier', 'coc-tsserver', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-pyright']
 " let g:coc_global_extensions = ['coc-eslint', 'coc-json', 'coc-pairs', 'coc-tailwindcss', 'coc-prettier', 'coc-tsserver', 'coc-emmet', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-git', 'coc-pyright']
 " let g:coc_global_extensions = ['coc-eslint', 'coc-json', 'coc-pairs', 'coc-tailwindcss', 'coc-tsserver', 'coc-emmet', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-git', 'coc-pyright']
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -786,4 +786,10 @@ let @d = 't:lDj0' " 去除ip后面的端口号
 " vimspector
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 let g:vimspector_install_gadgets = [ 'node', 'python', 'vscode-php-debug']
-
+let g:vimspector_sign_priority = {
+  \    'vimspectorBP':         14,
+  \    'vimspectorBPCond':     13,
+  \    'vimspectorBPLog':      12,
+  \    'vimspectorBPDisabled': 11,
+  \    'vimspectorPC':         999,
+  \ }
