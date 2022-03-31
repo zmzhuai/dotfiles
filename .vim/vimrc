@@ -786,6 +786,15 @@ let @d = 't:lDj0' " 去除ip后面的端口号
 " vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_install_gadgets = [ 'node', 'python', 'vscode-php-debug', 'debugpy']
+" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+" nmap <LocalLeader><F11> <Plug>VimspectorUpFrame
+" nmap <LocalLeader><F12> <Plug>VimspectorDownFrame
+
 let g:vimspector_sign_priority = {
   \    'vimspectorBP':         14,
   \    'vimspectorBPCond':     13,
