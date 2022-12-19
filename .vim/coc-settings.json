@@ -11,12 +11,14 @@
     // "coc.preferences.hoverTarget": "preview",
     // Auto close preview window on cursor move.,  default: `true`
     //"coc.preferences.previewAutoClose": false,
+    "diagnostic.displayByAle": true,
     "diagnostic.warningSign": "▲",
     "diagnostic.errorSign": "✗",
     "diagnostic.hintSign": "🔅",
     "diagnostic.infoSign": "❕",
-    "javascript.validate.enable": false,
-    // "coc.preferences.currentFunctionSymbolAutoUpdate": true
+    // "javascript.validate.enable": false,
+    // "tsserver.log": "verbose",
+    // "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "languageserver": {
         "go": {
             "command": "gopls",
@@ -34,6 +36,6 @@
         }
     },
     "coc.preferences.formatOnSaveFiletypes": [
-        "prisma"
+       "prisma"
     ]
 }
