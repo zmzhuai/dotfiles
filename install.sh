@@ -75,6 +75,13 @@ if which git-lfs >/dev/null 2>&1 ; then
   git lfs install
 fi
 
+if which zsh >/dev/null 2>&1 ; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+else
+  echo "Skipping zsh plugin setup because zsh isn't installed."
+fi
+
 if which tmux >/dev/null 2>&1 ; then
   echo "Setting up tmux..."
   if [ -e "$HOME/.tmux/plugins/tpm" ]; then
