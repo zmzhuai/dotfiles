@@ -8,6 +8,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="spaceship"
 DEFAULT_USER="mactool"
 
+ export EDITOR='vim'
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -107,6 +108,8 @@ alias nup='npm update -g'
 
 alias ssh="TERM=xterm-256color ssh"
 alias tmux="TERM=screen-256color-bce tmux"
+# alias ssh="TERM=xterm-256color ssh"
+# alias tmux="TERM=screen-256color-bce tmux"
 # alias tmux="env TERM=xterm-256color-italic tmux"
 alias ssh-keygen="ssh-keygen -t ed25519 -a 100"
 alias ssh-keygen-origin="ssh-keygen"
