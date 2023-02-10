@@ -778,7 +778,7 @@ let airline#extensions#coc#warning_symbol = 'Warning:'
 
 " python root pattern
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
-let g:coc_global_extensions = ['coc-eslint', 'coc-emmet', 'coc-git', 'coc-json', 'coc-pairs', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-pyright']
+let g:coc_global_extensions = ['coc-eslint', 'coc-tsserver', 'coc-emmet', 'coc-git', 'coc-json', 'coc-pairs', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-pyright']
 " let g:coc_global_extensions = ['coc-eslint', 'coc-json', 'coc-pairs', 'coc-tailwindcss', 'coc-prettier', 'coc-tsserver', 'coc-emmet', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-git', 'coc-pyright']
 " let g:coc_global_extensions = ['coc-eslint', 'coc-json', 'coc-pairs', 'coc-tailwindcss', 'coc-tsserver', 'coc-emmet', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-git', 'coc-pyright']
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
