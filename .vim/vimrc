@@ -166,7 +166,7 @@ call plug#begin('~/.vim/plugged')
     
     " Syntax
     " Plug 'sheerun/vim-polyglot'             " 多种语言语法支持
-    Plug 'w0rp/ale'                         " 语法lint
+    " Plug 'w0rp/ale'                         " 语法lint
     " Plug 'pantharshit00/vim-prisma'           " 与coc-prisma一起使用
 
     " DebugInspector
@@ -224,11 +224,11 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " Enable true color 启用终端24位色
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
+" if exists('+termguicolors')
+"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"   set termguicolors
+" endif
 
 " Global
 " let g:onedark_termcolors=256
@@ -515,59 +515,59 @@ set secure
 " au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
 
 " ALE
-let g:ale_disable_lsp = 1
-" let g:ale_php_langserver_use_global = 1
-" let g:ale_php_langserver_executable = $HOME.'/.composer/vendor/bin/php-language-server.php'
-let g:ale_completion_enabled = 0
-let g:ale_sign_warning = '▲'
-let g:ale_sign_error = '✗'
-let g:ale_linters = {
-\   'javascript': ['tsserver', 'standard'],
-\}
-let g:ale_fixers = {
-\   'javascript': ['standard'],
-\}
+" let g:ale_disable_lsp = 1
+" " let g:ale_php_langserver_use_global = 1
+" " let g:ale_php_langserver_executable = $HOME.'/.composer/vendor/bin/php-language-server.php'
+" let g:ale_completion_enabled = 0
+" let g:ale_sign_warning = '▲'
+" let g:ale_sign_error = '✗'
 " let g:ale_linters = {
 " \   'javascript': ['tsserver', 'standard'],
-" \   'go': ['gofmt'],
-" \   'php': ['langserver'],
 " \}
 " let g:ale_fixers = {
 " \   'javascript': ['standard'],
-" \   'go': ['gofmt'],
-" \   'php': ['langserver'],
 " \}
-" let g:ale_sign_column_always = 1
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-" let g:airline#extensions#ale#enabled = 1
-" let g:airline#extensions#ale#show_line_numbers = 1
-" autocmd FileType javascript nmap <buffer> gd :ALEGoToDefinition<CR>
-" autocmd FileType javascript nmap <buffer> gr :ALEFindReferences<CR>
-" autocmd FileType javascript nmap <buffer> gt :ALEHover<CR>
-" autocmd FileType javascript nmap <buffer> <leader>rn :ALERename<CR>
-" autocmd FileType typescript nmap <buffer> gd :ALEGoToDefinition<CR>
-" autocmd FileType typescript nmap <buffer> gr :ALEFindReferences<CR>
-" autocmd FileType typescript nmap <buffer> gt :ALEHover<CR>
-" autocmd FileType typescript nmap <buffer> <leader>rn :ALERename<CR>
-" autocmd FileType php nmap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
-" autocmd FileType php nmap <buffer> gd :ALEGoToDefinition<CR>
-" autocmd FileType php nmap <buffer> gr :ALEFindReferences<CR>
-" autocmd FileType php nmap <buffer> gt :ALEHover<CR>
-autocmd FileType javascript nmap ]g :ALENextWrap<CR>
-autocmd FileType typescript nmap [g :ALEPreviousWrap<CR>
-
-" Enable completion where available.
-" let g:ale_completion_enabled = 1
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
-" nmap ]w :ALENextWrap<CR>
-" nmap [w :ALEPreviousWrap<CR>
-nmap <Leader>f <Plug>(ale_fix)
-augroup VimDiff
-  autocmd!
-  autocmd VimEnter,FilterWritePre * if &diff | ALEDisable | endif
-augroup END
+" " let g:ale_linters = {
+" " \   'javascript': ['tsserver', 'standard'],
+" " \   'go': ['gofmt'],
+" " \   'php': ['langserver'],
+" " \}
+" " let g:ale_fixers = {
+" " \   'javascript': ['standard'],
+" " \   'go': ['gofmt'],
+" " \   'php': ['langserver'],
+" " \}
+" " let g:ale_sign_column_always = 1
+" " let g:ale_lint_on_save = 1
+" let g:ale_lint_on_text_changed = 1
+" " let g:airline#extensions#ale#enabled = 1
+" " let g:airline#extensions#ale#show_line_numbers = 1
+" " autocmd FileType javascript nmap <buffer> gd :ALEGoToDefinition<CR>
+" " autocmd FileType javascript nmap <buffer> gr :ALEFindReferences<CR>
+" " autocmd FileType javascript nmap <buffer> gt :ALEHover<CR>
+" " autocmd FileType javascript nmap <buffer> <leader>rn :ALERename<CR>
+" " autocmd FileType typescript nmap <buffer> gd :ALEGoToDefinition<CR>
+" " autocmd FileType typescript nmap <buffer> gr :ALEFindReferences<CR>
+" " autocmd FileType typescript nmap <buffer> gt :ALEHover<CR>
+" " autocmd FileType typescript nmap <buffer> <leader>rn :ALERename<CR>
+" " autocmd FileType php nmap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
+" " autocmd FileType php nmap <buffer> gd :ALEGoToDefinition<CR>
+" " autocmd FileType php nmap <buffer> gr :ALEFindReferences<CR>
+" " autocmd FileType php nmap <buffer> gt :ALEHover<CR>
+" autocmd FileType javascript nmap ]g :ALENextWrap<CR>
+" autocmd FileType typescript nmap [g :ALEPreviousWrap<CR>
+"
+" " Enable completion where available.
+" " let g:ale_completion_enabled = 1
+" highlight link ALEWarningSign String
+" highlight link ALEErrorSign Title
+" " nmap ]w :ALENextWrap<CR>
+" " nmap [w :ALEPreviousWrap<CR>
+" nmap <Leader>f <Plug>(ale_fix)
+" augroup VimDiff
+"   autocmd!
+"   autocmd VimEnter,FilterWritePre * if &diff | ALEDisable | endif
+" augroup END
 
 " 解决开了语法高亮vim光标移动卡慢的问题
 set re=1
@@ -778,7 +778,7 @@ let airline#extensions#coc#warning_symbol = 'Warning:'
 
 " python root pattern
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
-let g:coc_global_extensions = ['coc-git', 'coc-json', 'coc-tsserver', 'coc-pairs', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-pyright']
+let g:coc_global_extensions = ['coc-eslint', 'coc-emmet', 'coc-git', 'coc-json', 'coc-pairs', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-pyright']
 " let g:coc_global_extensions = ['coc-eslint', 'coc-json', 'coc-pairs', 'coc-tailwindcss', 'coc-prettier', 'coc-tsserver', 'coc-emmet', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-git', 'coc-pyright']
 " let g:coc_global_extensions = ['coc-eslint', 'coc-json', 'coc-pairs', 'coc-tailwindcss', 'coc-tsserver', 'coc-emmet', 'coc-prisma', '@yaegassy/coc-intelephense', 'coc-git', 'coc-pyright']
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
