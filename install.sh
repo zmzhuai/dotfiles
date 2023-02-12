@@ -86,16 +86,21 @@ fi
 
 if which tmux >/dev/null 2>&1 ; then
   echo "Setting up tmux..."
-  if [ -e "$HOME/.tmux/plugins/tpm" ]; then
-    pushd "$HOME/.tmux/plugins/tpm" >/dev/null
-    git pull -q origin master
-    popd >/dev/null
-  else
-    git clone -q https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
-  fi
-  $HOME/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null
-  $HOME/.tmux/plugins/tpm/scripts/clean_plugins.sh >/dev/null
-  $HOME/.tmux/plugins/tpm/scripts/update_plugin.sh >/dev/null
+  pushd ~
+  git clone https://github.com/gpakosz/.tmux.git
+  ln -s -f .tmux/.tmux.conf
+  popd
+  cp .tmux.conf.local ~/
+  # if [ -e "$HOME/.tmux/plugins/tpm" ]; then
+  #   pushd "$HOME/.tmux/plugins/tpm" >/dev/null
+  #   git pull -q origin master
+  #   popd >/dev/null
+  # else
+  #   git clone -q https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+  # fi
+  # $HOME/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null
+  # $HOME/.tmux/plugins/tpm/scripts/clean_plugins.sh >/dev/null
+  # $HOME/.tmux/plugins/tpm/scripts/update_plugin.sh >/dev/null
 else
   echo "Skipping tmux setup because tmux isn't installed."
 fi
