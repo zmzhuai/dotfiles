@@ -117,23 +117,23 @@ alias sha256sum="shasum -a 256"
 
 alias -g 'serveralias=serveralias -t zsh'
 
-export PATH="/usr/local/bin:$PATH"
-export N_PREFIX="$HOME/util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+# export PATH="/usr/local/bin:$PATH"
+# export N_PREFIX="$HOME/util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 
-export PATH="$HOME/.fastlane/bin:$PATH"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# export PATH="$HOME/.fastlane/bin:$PATH"
+# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 # export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-export PATH=$PATH:$HOME/depot_tools
+# export PATH=$PATH:$HOME/depot_tools
 
 # export PROJECT_HOME="$HOME/.virtualenvs"
 # source /usr/local/bin/virtualenvwrapper.sh
 
 # export TERM=xterm-256color
-export THEOS="$HOME/theos"
+# export THEOS="$HOME/theos"
 
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+# export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 # one dark terminal scheme
 # Add colors to Terminal
@@ -151,26 +151,33 @@ export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 # export JAVA_HOME=`/usr/libexec/java_home -v 11.0.9`
 
 # Go development
-export GOPATH="${HOME}/.go"
+# export GOPATH="${HOME}/.go"
 # export GOROOT="$(brew --prefix golang)/libexec" # slow operate
-export GOROOT="/usr/local/opt/go/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-test -d "${GOPATH}" || mkdir "${GOPATH}"
-test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+# export GOROOT="/usr/local/opt/go/libexec"
+# export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+# test -d "${GOPATH}" || mkdir "${GOPATH}"
+# test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 # libffi
-export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+# export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 # Setting for the new UTF-8 terminal support in Lion
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-export PATH="/usr/local/sbin:$PATH"
+# export PATH="/usr/local/sbin:$PATH"
 
 # flutter
-export PATH="$PATH:${HOME}/flutter/bin"
+# export PATH="$PATH:${HOME}/flutter/bin"
 
-export PATH="/usr/local/opt/php@7.4/bin:$PATH"
+# export PATH="/usr/local/opt/php@7.4/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+# export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.2/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.2/sbin:$PATH"
