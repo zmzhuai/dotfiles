@@ -5,8 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="spaceship"
 DEFAULT_USER="mactool"
+# ZSH_THEME="spaceship"
 
  export EDITOR='vim'
 # Uncomment the following line to use case-sensitive completion.
@@ -51,7 +51,7 @@ DEFAULT_USER="mactool"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git macos brew gem zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git macos brew gem)
 
 # User configuration
 
@@ -59,8 +59,9 @@ plugins=(git macos brew gem zsh-syntax-highlighting zsh-autosuggestions)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $(brew --prefix)/opt/spaceship/spaceship.zsh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -177,7 +178,11 @@ LC_ALL=en_US.UTF-8
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.2/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.2/sbin:$PATH"
+export PATH="$(brew --prefix)/bin:$PATH"
+# export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
+export PATH="$(brew --prefix)/opt/php@8.2/bin:$PATH"
+export PATH="$(brew --prefix)/opt/php@8.2/sbin:$PATH"
+export LDFLAGS="-L$(brew --prefix)/opt/openssl@1.1/lib"
+export CPPFLAGS="-I$(brew --prefix)/opt/openssl@1.1/include"
+
+eval "$(starship init zsh)"
